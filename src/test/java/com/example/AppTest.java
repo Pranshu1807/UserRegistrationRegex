@@ -1,10 +1,16 @@
 package com.example;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class AppTest {
+
+    public static Map<String, Integer> Freq = new HashMap<String, Integer>();
 
     @ParameterizedTest
     @ValueSource(strings = { "Pranshu", "PraNshu", "PraPRsad", "Prr" })
@@ -53,8 +59,16 @@ public class AppTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = { "Pranshu1807", "pra@nshu1", "PRANSHUdada#", "pranshu12870123#1P@","P1@fifi" })
+    @ValueSource(strings = { "Pranshu1807", "pra@nshu1", "PRANSHUdada#", "pranshu12870123#1P@", "P1@fifi" })
     public void sadPassword(String password) {
         assertEquals(false, PasswordValidator.ValidatePassword(password));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "abc@yahoo.com", "abc-100@yahoo.com", "abc111@abc.com", "abc@1.com",
+            "abc-100@abc.net", "abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com" })
+    public void duplicateEmail(String email) {
+        Freq.put(email, Freq.getOrDefault(email, 0) + 1);
+        assertEquals(true, Freq.get(email) == 1);
     }
 }
