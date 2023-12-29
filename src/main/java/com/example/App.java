@@ -27,5 +27,12 @@ public class App {
         Matcher matcher2 = pattern2.matcher(email);
         System.out.println(matcher2.matches());
 
+        String phonePatter = "^[0-9]{2}+[\\s_]+[0-9]{10}$";
+        Pattern pattern3 = Pattern.compile(phonePatter);
+        System.out.println("Enter the phone number");
+        String phone = sc.nextLine();
+        Matcher matcher3 = pattern3.matcher(phone);
+        System.out.println(matcher3.matches());
+
     }
 }
