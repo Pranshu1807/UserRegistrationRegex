@@ -34,5 +34,12 @@ public class App {
         Matcher matcher3 = pattern3.matcher(phone);
         System.out.println(matcher3.matches());
 
+        String passwordPattern = "^.{8,}$";
+        Pattern pattern4 = Pattern.compile(passwordPattern);
+        System.out.println("Enter the Password");
+        String password = sc.nextLine();
+        Matcher matcher4 = pattern4.matcher(password);
+        System.out.println(matcher4.matches());
+
     }
 }
