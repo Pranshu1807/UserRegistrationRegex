@@ -7,39 +7,18 @@ import java.util.regex.Pattern;
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        String namePattern = "^[A-Z][a-zA-z]{2,}$";
-        Pattern pattern = Pattern.compile(namePattern);
-        System.out.println("Enter a valid first name");
-        String firstname = sc.nextLine();
-        Matcher matcher = pattern.matcher(firstname);
-        System.out.println(matcher.matches());
-
-        System.out.println("Enter a valid Last name");
-        String lastName = sc.nextLine();
-        matcher = pattern.matcher(lastName);
-        System.out.println(matcher.matches());
-
-        String emailPattern = "^[A-Za-z][A-Za-z0-9._%+-]*@[A-Za-z]+\\.[a-zA-Z]{2,}$";
+        String emailPattern = "^[a-zA-z0-9]{1,}[\\.+-]?[a-zA-z0-9]+@[a-zA-z0-9]{1,}(\\.[a-zA-z]{2,}){1,2}$";
         Pattern pattern2 = Pattern.compile(emailPattern);
-        System.out.println("Enter the email");
-        String email = sc.nextLine();
-        Matcher matcher2 = pattern2.matcher(email);
-        System.out.println(matcher2.matches());
+        String[] emails = { "abc@yahoo.com", "abc-100@yahoo.com", "abc111@abc.com", "abc.100@yahoo.com",
+                "abc-100@abc.net", "abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com", "abc",
+                "abc@.com.my", "abc123@gmail.a", "abc123@.com", "abc123@.com.com", ".abc@abc.com",
+                "abc()*@gmail.com", "abc@%*.com", "abc..2002@gmail.com", "abc.@gmail.com", "abc@abc@gmail.com",
+                "abc@gmail.com.1a", "abc@gmail.com.aa.au" };
 
-        String phonePatter = "^[0-9]{2}+[\\s_]+[0-9]{10}$";
-        Pattern pattern3 = Pattern.compile(phonePatter);
-        System.out.println("Enter the phone number");
-        String phone = sc.nextLine();
-        Matcher matcher3 = pattern3.matcher(phone);
-        System.out.println(matcher3.matches());
-
-        String passwordPattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[.,:;@#%$^&{}!()<>/|]).{8,}$";
-        Pattern pattern4 = Pattern.compile(passwordPattern);
-        System.out.println("Enter the Password");
-        String password = sc.nextLine();
-        Matcher matcher4 = pattern4.matcher(password);
-        System.out.println(matcher4.matches());
+        for (String email : emails) {
+            Matcher matcher2 = pattern2.matcher(email);
+            System.out.println(matcher2.matches());
+        }
 
     }
 }
