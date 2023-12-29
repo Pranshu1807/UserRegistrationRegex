@@ -34,7 +34,7 @@ public class App {
         Matcher matcher3 = pattern3.matcher(phone);
         System.out.println(matcher3.matches());
 
-        String passwordPattern = "^(?=.*[A-Z]).{8,}$";
+        String passwordPattern = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
         Pattern pattern4 = Pattern.compile(passwordPattern);
         System.out.println("Enter the Password");
         String password = sc.nextLine();
